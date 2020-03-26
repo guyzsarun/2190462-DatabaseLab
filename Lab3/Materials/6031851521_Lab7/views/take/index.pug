@@ -1,0 +1,44 @@
+html
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='description', content='Some description')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css')
+	body
+		div.container
+			h3 Lab 7: MySQL & Node.js
+			p  
+			hr
+			p
+				a.btn.btn-primary(href='take/add') Add new enrollment
+	
+			form(action='' method="GET")
+				.form-group
+					label(for="post_title") Search
+					input#post_id.form-control(type='text' name='id' placeholder='SEARCH')
+					br
+					input.btn.btn-primary(type="submit" value="SEARCH") 
+			table.table.table-bordered
+				tr
+					th.text-left(width='5%') StudentID
+					th.text-left(width='20%') CourseID
+					th.text-left(width='5%') SectionID
+					th.text-left(width='5%') Semester
+					th.text-left(width='5%') Year
+					th.text-left(width='5%') Grade
+					th.text-left(width='5%') Edit
+					th.text-left(width='5%') Delete
+				for t in take
+					tr
+						td=t.student_id
+						td=t.cid
+						td=t.sect_id
+						td=t.semester
+						td=t.year
+						td=t.grade
+						td
+							a.btn.btn-warning(href='/take/edit/' + t.student_id) Edit
+						td
+							a.btn.btn-danger(href='/take/delete/' + t.student_id) Delete
+
